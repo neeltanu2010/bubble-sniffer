@@ -323,6 +323,203 @@ PREMIUM_CSS = """
         text-align: center;
         box-shadow: 0 18px 44px rgba(15,23,42,0.16);
     }
+    /* ============================================================
+   MOBILE READABILITY FIX
+   Desktop/PC design remains unchanged.
+   This applies only on mobile/tablet screens.
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .block-container {
+        padding-top: 2.4rem !important;
+        padding-left: 0.85rem !important;
+        padding-right: 0.85rem !important;
+        padding-bottom: 3rem !important;
+        max-width: 100% !important;
+    }
+
+    .premium-title,
+    .main-title {
+        font-size: 2.05rem !important;
+        line-height: 1.22 !important;
+        letter-spacing: -0.025em !important;
+        padding-top: 0.45rem !important;
+        padding-bottom: 0.25rem !important;
+        margin-top: 0.4rem !important;
+        overflow: visible !important;
+        word-break: normal !important;
+        white-space: normal !important;
+
+        /* Mobile readability: removes gradient clipping only on mobile */
+        -webkit-text-fill-color: initial !important;
+        background: none !important;
+        color: #111827 !important;
+    }
+
+    .premium-subtitle,
+    .sub-title {
+        font-size: 0.96rem !important;
+        line-height: 1.6 !important;
+        color: #374151 !important;
+        margin-bottom: 1.1rem !important;
+    }
+
+    .hero-box,
+    .premium-hero,
+    .dialog-box,
+    .dialogue-card,
+    .input-panel,
+    .mode-box,
+    .bee-box,
+    .chart-note-card {
+        padding: 16px 15px !important;
+        border-radius: 20px !important;
+        margin-bottom: 14px !important;
+        overflow: visible !important;
+        min-height: auto !important;
+        background-color: rgba(255,255,255,0.96) !important;
+    }
+
+    .premium-hero h2,
+    .hero-box h2,
+    .box-title,
+    .dialogue-title,
+    .section-header {
+        font-size: 1.25rem !important;
+        line-height: 1.35 !important;
+        color: #111827 !important;
+        -webkit-text-fill-color: initial !important;
+        background: none !important;
+        word-break: normal !important;
+        white-space: normal !important;
+    }
+
+    .premium-hero p,
+    .hero-box p,
+    .box-text,
+    .dialogue-body,
+    .small-muted,
+    p,
+    li,
+    label,
+    .stMarkdown,
+    .stCaption {
+        font-size: 0.92rem !important;
+        line-height: 1.58 !important;
+        color: #374151 !important;
+        -webkit-text-fill-color: initial !important;
+        word-break: normal !important;
+        white-space: normal !important;
+    }
+
+    .pill {
+        font-size: 0.72rem !important;
+        padding: 6px 9px !important;
+        margin-right: 5px !important;
+        margin-bottom: 6px !important;
+        color: #6B4A00 !important;
+        background: #FFF3BF !important;
+        white-space: normal !important;
+    }
+
+    div[data-testid="stMetric"] {
+        padding: 13px 12px !important;
+        border-radius: 18px !important;
+        overflow: visible !important;
+    }
+
+    div[data-testid="stMetricLabel"] {
+        font-size: 0.78rem !important;
+        color: #4B5563 !important;
+        white-space: normal !important;
+    }
+
+    div[data-testid="stMetricValue"] {
+        font-size: 1.35rem !important;
+        color: #111827 !important;
+        white-space: normal !important;
+    }
+
+    div.stButton > button,
+    div.stDownloadButton > button {
+        min-height: 2.8rem !important;
+        font-size: 0.86rem !important;
+        white-space: normal !important;
+        line-height: 1.25 !important;
+        padding: 0.65rem 0.8rem !important;
+    }
+
+    div[data-testid="stTextInput"] input,
+    div[data-testid="stTextArea"] textarea {
+        font-size: 0.92rem !important;
+        color: #111827 !important;
+        background: rgba(255,255,255,0.98) !important;
+    }
+
+    div[data-testid="stTabs"] [role="tablist"] {
+        overflow-x: auto !important;
+        gap: 6px !important;
+    }
+
+    div[data-testid="stTabs"] [role="tab"] {
+        min-width: max-content !important;
+        font-size: 0.8rem !important;
+        padding: 7px 10px !important;
+        white-space: nowrap !important;
+    }
+
+    .premium-table-wrap {
+        border-radius: 18px !important;
+        max-height: 520px !important;
+        overflow: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    table.premium-table {
+        font-size: 0.78rem !important;
+        min-width: 760px !important;
+    }
+
+    table.premium-table thead th,
+    table.premium-table tbody td {
+        padding: 10px 11px !important;
+        line-height: 1.38 !important;
+        color: #111827 !important;
+    }
+
+    .badge {
+        font-size: 0.68rem !important;
+        padding: 5px 8px !important;
+        white-space: normal !important;
+    }
+
+    div[data-testid="stPlotlyChart"] {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    div[data-testid="stPlotlyChart"] > div {
+        min-width: 620px !important;
+    }
+
+    section[data-testid="stSidebar"] {
+        display: none !important;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .premium-title,
+    .main-title {
+        font-size: 1.75rem !important;
+    }
+
+    table.premium-table {
+        font-size: 0.72rem !important;
+        min-width: 700px !important;
+    }
+}
 </style>
 """
 
