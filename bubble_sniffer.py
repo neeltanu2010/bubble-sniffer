@@ -503,9 +503,23 @@ PREMIUM_CSS = """
         min-width: 620px !important;
     }
 
+    /* Keep sidebar open/close arrow working on mobile */
+@media (max-width: 768px) {
     section[data-testid="stSidebar"] {
-        display: none !important;
+        display: block !important;
     }
+
+    section[data-testid="stSidebar"] * {
+        color: inherit;
+    }
+
+    section[data-testid="stSidebar"] textarea,
+    section[data-testid="stSidebar"] input {
+        color: #111827 !important;
+        background: rgba(255,255,255,0.98) !important;
+        font-size: 0.92rem !important;
+    }
+}
 }
 
 @media (max-width: 420px) {
