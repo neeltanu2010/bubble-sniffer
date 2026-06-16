@@ -6,6 +6,9 @@ import streamlit as st
 import yfinance as yf
 from bs4 import BeautifulSoup
 from io import StringIO
+from common.protect_tool import require_tool_access
+
+user = require_tool_access("bubble-sniffer")
 
 st.set_page_config(
     page_title="Bubble Sniffer by Financify",
