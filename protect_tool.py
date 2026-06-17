@@ -8,7 +8,7 @@ SURECART_CHECKOUT_URL = st.secrets.get("SURECART_CHECKOUT_URL", os.getenv("SUREC
 
 def _post(path: str, payload: dict):
     try:
-        response = requests.post(f"{BACKEND_URL}{path}", json=payload, timeout=20)
+        response = requests.post(f"{BACKEND_URL}{path}", json=payload, timeout=120)
         if response.status_code >= 400:
             try:
                 detail = response.json().get("detail", response.text)
