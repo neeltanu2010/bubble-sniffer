@@ -53,7 +53,7 @@ def get_current_access(tool_name: str) -> dict:
 
     return _post("/usage/check", {
         "email": email,
-        "tool": tool_name
+        "tool_name": tool_name
     })
 
 
@@ -64,7 +64,7 @@ def record_tool_use(tool_name: str):
 
     return _post("/usage/record", {
         "email": email,
-        "tool": tool_name
+        "tool_name": tool_name
     })
 
 
