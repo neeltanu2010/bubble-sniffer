@@ -226,7 +226,7 @@ def get_current_access(tool_name: str) -> dict:
         return {"logged_in": False}
 
     # Try common backend endpoint names. If one fails, fall back gracefully.
-    payload = {"email": email, "tool_name": tool_name, "tool": tool_name, "token": token}
+    payload = {"email": email, "tool_name": tool_name}
     for path in ["/tools/check-access", "/check-access", "/usage/check", "/auth/check-access"]:
         try:
             data = _post(path, payload)
@@ -290,7 +290,7 @@ def record_tool_use(tool_name: str):
     token = st.session_state.get("financify_token", "")
     if not email or not token:
         return None
-    payload = {"email": email, "tool_name": tool_name, "tool": tool_name, "token": token}
+    payload = {"email": email, "tool_name": tool_name}
     for path in ["/tools/record-usage", "/record-usage", "/usage/record", "/tool/record"]:
         try:
             return _post(path, payload)
