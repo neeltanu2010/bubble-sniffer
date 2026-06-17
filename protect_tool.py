@@ -21,11 +21,9 @@ def _post(path: str, payload: dict, timeout: int = 120):
     )
 
     if response.status_code >= 400:
-        try:
-            detail = response.json().get("detail", response.text)
-        except Exception:
-            detail = response.text
-        raise RuntimeError(str(detail))
+        st.error(f"Backend error {response.status_code} on {path}")
+        st.code(response.text)
+        raise RuntimeError(response.text)
 
     try:
         return response.json()
