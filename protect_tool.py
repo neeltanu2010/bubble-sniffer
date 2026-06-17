@@ -21,9 +21,11 @@ def _post(path: str, payload: dict, timeout: int = 120):
     )
 
     if response.status_code >= 400:
-        st.error(f"Backend error {response.status_code} on {path}")
-        st.code(response.text)
-        raise RuntimeError(response.text)
+        try:
+            detail = response.json().get("detail", response.text)
+        except Exception:
+            detail = response.text
+        raise RuntimeError(str(detail))
 
     try:
         return response.json()
@@ -209,11 +211,24 @@ def login_ui(tool_display_name: str):
         if st.button("Verify login", use_container_width=True, type="primary"):
             try:
                 data = verify_login_code(email, otp)
+
+                token = (
+                    data.get("session_token")
+                    or data.get("token")
+                    or data.get("access_token")
+                )
+
+                if not token:
+                    st.error("Login succeeded, but backend did not return a session token.")
+                    st.stop()
+
                 st.session_state["financify_email"] = email.strip().lower()
-                st.session_state["financify_token"] = data.get("token", "verified")
+                st.session_state["financify_token"] = token
                 st.session_state["financify_logged_in"] = True
+
                 st.success("Login successful.")
                 st.rerun()
+
             except Exception as e:
                 st.error(str(e))
 
@@ -226,6 +241,7 @@ def login_ui(tool_display_name: str):
         """,
         unsafe_allow_html=True
     )
+
     upgrade_button()
 
 
@@ -236,7 +252,16 @@ def require_tool_access(tool_name: str, display_name: str = None):
         login_ui(display_name)
         st.stop()
 
-    access = get_current_access(tool_name)
+    try:
+        access = get_current_access(tool_name)
+    except Exception as e:
+        for key in ["financify_email", "financify_token", "financify_logged_in"]:
+            st.session_state.pop(key, None)
+
+        st.error("Your login session expired. Please login again.")
+        st.caption(str(e))
+        login_ui(display_name)
+        st.stop()
 
     plan = access.get("plan", "free")
     used = int(access.get("usage_count", access.get("used", 0)) or 0)
