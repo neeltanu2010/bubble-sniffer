@@ -21,7 +21,7 @@ if not (_FINANCIFY_ROOT / "common").exists() and (_FINANCIFY_ROOT.parent / "comm
     _FINANCIFY_ROOT = _FINANCIFY_ROOT.parent
 if str(_FINANCIFY_ROOT) not in _financify_sys.path:
     _financify_sys.path.insert(0, str(_FINANCIFY_ROOT))
-from common.protect_tool import require_tool_access, record_tool_use
+from protect_tool import require_tool_access, record_tool_use
 # --- end Financify protection imports ---
 
 TOOL_NAME = "bubble-sniffer"
