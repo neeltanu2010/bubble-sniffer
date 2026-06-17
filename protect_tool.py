@@ -48,22 +48,28 @@ def verify_login_code(email: str, otp: str):
 
 def get_current_access(tool_name: str) -> dict:
     email = st.session_state.get("financify_email", "")
-    if not email:
+    session_token = st.session_state.get("financify_token", "")
+
+    if not email or not session_token:
         return {"logged_in": False}
 
     return _post("/usage/check", {
         "email": email,
+        "session_token": session_token,
         "tool_name": tool_name
     })
 
 
 def record_tool_use(tool_name: str):
     email = st.session_state.get("financify_email", "")
-    if not email:
+    session_token = st.session_state.get("financify_token", "")
+
+    if not email or not session_token:
         return None
 
     return _post("/usage/record", {
         "email": email,
+        "session_token": session_token,
         "tool_name": tool_name
     })
 
