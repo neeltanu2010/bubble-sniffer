@@ -9,7 +9,7 @@ BACKEND_URL = st.secrets.get(
 
 SURECART_CHECKOUT_URL = st.secrets.get(
     "SURECART_CHECKOUT_URL",
-    os.getenv("SURECART_CHECKOUT_URL", "")
+    os.getenv("SURECART_CHECKOUT_URL", "https://financify.blog/buy/financify-tools")
 )
 
 
